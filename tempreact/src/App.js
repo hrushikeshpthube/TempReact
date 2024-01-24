@@ -5,6 +5,8 @@ import './App.css';
 function App() {
   const [inputbut, setbut] = useState(true);
   const [text,settext]=useState("hide element");
+  const [bindtext,setbind]=useState("");
+  const [disbutval,setdisbut]=useState(true)
 
   const FunVisible = () => {
     setbut(!inputbut);
@@ -18,6 +20,23 @@ function App() {
       <li key={index}>{item}</li>
     )
   })
+
+// const Fun2Bind=(event)=>{
+//   // event.prevent.default;
+//   console.log(event.target.value);
+//   const temp=event.target.value;
+//   setbind(temp);
+//   // if(bindtext.length===0)
+//   // {setdisbut("disabled")}
+//   // else {setdisbut("")}
+  
+// }
+// const Fundisablebutton=()=>{
+//   return(
+//   bindtext.length<1?setdisbut(true):setdisbut(false)
+//   )
+// }
+
   return (
     <div>
       <ul>
@@ -29,6 +48,9 @@ function App() {
       {/* toogle element visibility */}
     
      
+     <input type="text" placeholder="Enter text" onChange={(event)=>{setbind(event.target.value)}}value={bindtext}></input>
+     <button type="button" disabled={ bindtext.length<1?true:false}>submit</button>
+     <p>{bindtext}</p>
     </div>
   )
 }
